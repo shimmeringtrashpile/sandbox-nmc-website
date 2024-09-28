@@ -1,0 +1,11 @@
+services:
+  webserver:
+    build: .
+    image: sandbox-nmc-website
+    container_name: webserver
+    ports:
+      - "80:80"
+    volumes:
+      - ./nmc-website:/var/www/html/
+    env_file:
+      - ./id.env
