@@ -2,6 +2,3 @@
 
 #Docker apache user ID file
 id.env
-
-# Remove this once submodules are setup with an ssh key.
-.gitmodules

@@ -14,19 +14,61 @@ Windows: https://docs.docker.com/desktop/install/windows-install/
 You will also have to install Docker Compose via https://docs.docker.com/compose/install/, because it greatly facilitates running multiple containers with different services, and we will of course have examples of using Docker Compose in this recipe.
 
 ## Step 1: Submodule the New Media Caucus website repo.
-Submodule lets you keep a git repo inside another git repo! Super cool!
+Git's Submodule feature lets you keep a git repo inside... another... git repo! Super cool!
+This takes a little bit of work. We need to securely authenticate to GitHub in order to reach this other repo. This is a bit fiddly. In the 21st Century, dealing with security is a pain in the butt, but we'll get through it together.
 
-Note!: In the command below I have a placeholder token called your_github_token_goes_here. 
+<!-- Note!: In the command below I have a placeholder token called your_github_token_goes_here. 
 
-You must change your_github_token_goes_here with your very own personal GitHub token.
+You must change your_github_token_goes_here with your very own personal GitHub token. -->
 
-Don’t have a GitHub token? You can create one for your account at https://github.com/settings/tokens. When you are creating a token, you only need to check the first checkbox:  repo to enable Full control of private repositories.
+### 1a. Install the GitHub CLI (command line interface) Client.
+This lets you run GitHub commands from the terminal. If you are new to git and GitHub they feel like the same thing but they are different. GitHub is a platform that uses git technology. Git commands start with "git"., GitHub commands start with "gh".
+
+The GitHub CLI Client is available at https://github.com/cli/cli.
+
+
+You can install it using something like homebrew or you can download an installer at: 
+https://github.com/cli/cli/releases/tag/v2.57.0
+
+Once you have it installed, double check that it is by typing:
+
+```gh --version``` and you shouldn't get an error.
+
+### 1b. Create a GitHub token for yourself.
+GitHub tokens are used to authenticate with GitHub repos without having to use a username and password. 
+
+Don’t have a GitHub token? You can create one for your account at https://github.com/settings/tokens. When you are creating a token, you need to check a couple of boxes.
+- Check the "repo" checkbox group:  for Full control of private repositories.
+- Check the "read:org" checkbox: This is under the admin:org checkbox group.
 
 I do myself a favor and give myself a generous expiration date of about 6 months. You do you.
 
+OK. You will now have a token! It is a long string of characters starting with "ghp".
+Copy and paste your token to a safe place such as your password manager if you use one.
+You should keep a copy becuase GitHub will never show it to you again. If you don't have it stored somewhere else, you can't see it. GitHub will only let you create a new one.
+
+### 1c. Setup GitHub CLI's authentication
+``` gh auth login```
+You'll go through these steps:
+- ? What account do you want to log into? GitHub.com
+- ? What is your preferred protocol for Git operations on this host? HTTPS
+- ? Authenticate Git with your GitHub credentials? No
+- ? How would you like to authenticate GitHub CLI? Paste an authentication token
+- Tip: you can generate a Personal Access Token here https://github.com/settings/tokens
+- The minimum required scopes are 'repo', 'read:org'.
+- ? Paste your authentication token: ****************************************
+- You'll see this: ```gh config set -h github.com git_protocol https```
+- ✓ Configured git protocol
+- ✓ Logged in as your_username_whatever_that_is
+
+
+
+### 1d. Run the submodule command.
 OK. Here's the submodule command. This will create a folder called nmc-website with the repo in it.
 
-```git submodule add https://username:your_github_token_goes_here@github.com/NewMediaCaucus/nmc-website.git nmc-website```
+```git submodule add https://github.com/NewMediaCaucus/nmc-website.git nmc-website```
+
+You should see git doing stuff and now have the "nmc-website" folder in your project.
 
 ## Step 2. Run docker build.
 Don't forget the trailing dot!
@@ -47,8 +89,8 @@ The id.env file is in .gitignore so it won't copy your id to GitHub.com.
  
 ```echo -e "USERID=$(id -u)" > id.env```
 
-## Start the container with docker-compose
+## Step 5. Try it out! Start the container with docker-compose
 ```docker-compose up -d```
 
-## Stop the container with docker-compose
+## How to stop the container with docker-compose
 ```docker-compose down```
