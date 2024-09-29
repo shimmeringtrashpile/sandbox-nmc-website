@@ -32,7 +32,9 @@ https://github.com/cli/cli/releases/tag/v2.57.0
 
 Once you have it installed, double check that it is by typing:
 
-```gh --version``` and you shouldn't get an error.
+```gh --version``` 
+
+and you shouldn't get an error.
 
 ### 1b. Create a GitHub token for yourself.
 GitHub tokens are used to authenticate with GitHub repos without having to use a username and password. 
@@ -45,11 +47,14 @@ I do myself a favor and give myself a generous expiration date of about 6 months
 
 OK. You will now have a token! It is a long string of characters starting with "ghp".
 Copy and paste your token to a safe place such as your password manager if you use one.
-You should keep a copy becuase GitHub will never show it to you again. If you don't have it stored somewhere else, you can't see it. GitHub will only let you create a new one.
+You should keep a copy becuase GitHub will never show it to you again. If you don't have it stored somewhere else, you can't see it as GitHub will only let you create a new one.
 
 ### 1c. Setup GitHub CLI's authentication
+To setup CLI authentication you can use GitHub's little setup cool by typing
+
 ``` gh auth login```
-You'll go through these steps:
+
+Using this tool, you'll go through these steps:
 - ? What account do you want to log into? GitHub.com
 - ? What is your preferred protocol for Git operations on this host? HTTPS
 - ? Authenticate Git with your GitHub credentials? No
@@ -62,9 +67,8 @@ You'll go through these steps:
 - ✓ Logged in as your_username_whatever_that_is
 
 
-
 ### 1d. Run the submodule command.
-OK. Here's the submodule command. This will create a folder called nmc-website with the repo in it.
+OK. here's the submodule command. This will create a folder called nmc-website with the NMC repo in it.
 
 ```git submodule add https://github.com/NewMediaCaucus/nmc-website.git nmc-website```
 
