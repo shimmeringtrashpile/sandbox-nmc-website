@@ -1,3 +1,5 @@
 [submodule "nmc-website"]
 	path = nmc-website
 	url = https://github.com/NewMediaCaucus/nmc-website.git
+	branch = dev
+
