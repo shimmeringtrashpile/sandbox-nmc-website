@@ -98,3 +98,18 @@ The id.env file is in .gitignore so it won't copy your id to GitHub.com.
 
 ## How to stop the container with docker-compose
 ```docker-compose down```
+
+
+## Using Submodules
+
+Update your submodule
+```git submodule update --remote```
+
+```git submodule set-branch -b dev```
+
+If you want to pull your branch and the submodules
+
+```git pull --recurse-submodules```
+
+## See Also
+Alexander Sirenko has a nice tutorial: https://medium.com/@alexander.sirenko/using-github-access-token-with-submodules-5038b6d639e8

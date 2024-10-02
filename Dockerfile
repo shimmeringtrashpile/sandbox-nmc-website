@@ -38,7 +38,9 @@ RUN rm /var/www/html/*
 RUN a2enmod headers rewrite
 
 # Change web server's user id to match local user, replace with your local user id
-RUN usermod --uid 1001 www-data
+# RUN usermod --uid 1001 www-data
+COPY entrypoint.sh /usr/local/bin/
+ENTRYPOINT ["entrypoint.sh"]
 
 # Tell container to listen to port 80 at runtime
 EXPOSE 80
