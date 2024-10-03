@@ -1,9 +1,11 @@
 # README
 
-This details the steps for getting Docker setup to run the New Media Caucus website.
+This details the steps for getting Docker set up to run the New Media Caucus website.
 
-## Step 0: Go Install Docker Engine and Docker Compose.
-Before we can start, you will have to install the Docker Engine on your computer. You can follow the official documentation, which you can find here for your OS:
+## Step 0: Install Docker Engine and Docker Compose.
+### Install Docker Engine
+Before we can start, you will have to install the Docker Engine on your computer. This is best done on a laptop or workstation (non-servers) by installing the Docker Desktop application. 
+You can follow the official documentation here for your OS:
 
 Linux: https://docs.docker.com/engine/install/
 
@@ -11,11 +13,9 @@ macOS: https://docs.docker.com/desktop/install/mac-install/
 
 Windows: https://docs.docker.com/desktop/install/windows-install/
 
-You will also have to install Docker Compose via https://docs.docker.com/compose/install/, because it greatly facilitates running multiple containers with different services, and we will of course have examples of using Docker Compose in this recipe.
-
 ## Step 1: Submodule the New Media Caucus website repo.
-Git's Submodule feature lets you keep a git repo inside... another... git repo! Super cool!
-This takes a little bit of work. We need to securely authenticate to GitHub in order to reach this other repo. This is a bit fiddly. In the 21st Century, dealing with security is a pain in the butt, but we'll get through it together.
+Git's Submodule feature lets you keep a git repo inside... another... git repo! Super cool! [It's repos all the way down]([url](https://en.wikipedia.org/wiki/Turtles_all_the_way_down)).
+This takes a little bit of work becuase we want to connect to two different repos with different memberships. First, you need to authenticate securely to GitHub to reach the New Media Caucus repo. This is a bit fiddly. In the 21st Century, dealing with security is a pain in the butt, but we'll get through it together.
 
 <!-- Note!: In the command below I have a placeholder token called your_github_token_goes_here. 
 
