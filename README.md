@@ -83,10 +83,12 @@ Use this command at the terminal to make it executable...
 
 ```chmod +x entrypoint.sh```
 
+*****This step is not needed?*****
 Now run it.
 Notice this starts with ```./``` On Mac and Linux computers, this ./ is needed before the script to run scripts.
 
 ```./entrypoint.sh```
+*****
 
 ## Step 4. Create an id.env file
 You're going to generate an id.env file for your computer. We have id.env in .gitignore so it won't share your id up to GitHub.com.
