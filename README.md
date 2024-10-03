@@ -84,6 +84,7 @@ Use this command at the terminal to make it executable...
 ```chmod +x entrypoint.sh```
 
 ``` *****This step is not needed?*****```
+
 Now run it.
 Notice this starts with ```./``` On Mac and Linux computers, this ./ is needed before the script to run scripts.
 
