@@ -98,10 +98,10 @@ Your ID is just a simple number, such as 1001. You need Docker to use this same 
 ```echo -e "USERID=$(id -u)" > id.env```
 
 ## Step 5. Try it out! Start the container with docker-compose
-```docker-compose up -d```
+```docker compose up -d```
 
 ## How to stop the container with docker-compose
-```docker-compose down```
+```docker compose down```
 
 
 ## Using Submodules
