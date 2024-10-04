@@ -5,7 +5,19 @@ services:
     container_name: webserver
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - ./nmc-website:/var/www/html/
+      - ./certs:/etc/letsencrypt
+      - ./certs-data:/data/letsencrypt
     env_file:
       - ./id.env
+    depends_on:
+      - certbot
+  certbot:
+  image: certbot/certbot
+  container_name: certbot
+  volumes:
+    - ./certs:/etc/letsencrypt
+    - ./certs-data:/data/letsencrypt
+  entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
