@@ -19,6 +19,7 @@ services:
   certbot:
     image: certbot/certbot
     container_name: certbot
+    user: root
     volumes:
       - ./certs:/etc/letsencrypt
       - ./certs-data:/data/letsencrypt
