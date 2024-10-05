@@ -65,53 +65,53 @@ Using this tool, you'll go through these steps:
 
 
 ### Part 1d. Run the submodule command.
-OK. here's the submodule command. This will create a folder called nmc-website with the NMC repo in it.
+OK. here's the submodule command.
+
+Run it inside the sandbox-nmc-website's (this repo) folder.
+
+Submodule will create a folder called nmc-website with the NMC repo in it.
 
 ```git submodule add https://github.com/NewMediaCaucus/nmc-website.git nmc-website```
 
-You should see git doing stuff and now have the "nmc-website" folder in your project.
+You should see git doing stuff and creating have the "nmc-website" folder in your project.
 
-You now have a git repo inside another git repo! 
+You now have a git repo inside another git repo!  It's repo's all the way down!
 
-## Step 2. Run docker build.
-From the terminal, use this command. Remember the trailing dot!
 
-```docker build -t sandbox-nmc-website .```
-
-## Step 3. Make the entrypoint.sh script executable and run it.
-Use this command at the terminal to make it executable...
+## Step 2. Make the entrypoint.sh script executable and run it.
+There's a script that your docker will need to run. So you need to use this command to make it executable... The ```+x``` is for eXecutable.
 
 ```chmod +x entrypoint.sh```
 
-``` *****This step is not needed?*****```
+## Step 3. Run docker build usind docker's compose.
+Now use this command to build your dev environment. This uses the ```docker compose``` command. Compose let's you get fancy with your Docker setups.
 
-Now run it.
-Notice this starts with ```./``` On Mac and Linux computers, this ./ is needed before the script to run scripts.
-
-```./entrypoint.sh```
-```*****```
-
+```sudo docker compose -f docker-compose.dev.yml up --build -d```
+ 
 ## Step 4. Create an id.env file
-You're going to generate an id.env file for your computer. We have id.env in .gitignore so it won't share your id up to GitHub.com.
-Your ID is just a simple number, such as 1001. You need Docker to use this same ID to run Apache. That way, Apache can mount your local filesystem as if it was on the server.
+You're going to generate an id.env file for your computer. We have id.env in .gitignore so it won't share your id up to GitHub.com. Your ID is just a simple number, such as ```1001```. You need Docker to use this same ID to run Apache with the same ID as the ID that mount's your local filesystem.
  
 ```echo -e "USERID=$(id -u)" > id.env```
 
 ## Step 5. Try it out! Start the container with docker-compose
-```docker compose up -d```
+```docker compose -f docker-compose.dev.yml up -d```
 
 ## How to stop the container with docker-compose
-```docker compose down```
+```docker compose -f docker-compose.dev.yml down```
 
 
-## Using Submodules
+## More About Using Submodules
+If you haven't used submodules before, there are a few useful commands. It is very similar to running ```git branch```.
 
 Update your submodule
+
 ```git submodule update --remote```
+
+Set your submodule's branch
 
 ```git submodule set-branch -b dev```
 
-If you want to pull your branch and the submodules
+If you want to pull this branch and the submodules contained inside all at the same time.
 
 ```git pull --recurse-submodules```
 
