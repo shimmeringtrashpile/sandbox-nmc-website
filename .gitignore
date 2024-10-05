@@ -6,3 +6,6 @@ id.env
 # Let's Encrypt certificates and data
 certs/
 certs-data/
+letsencrypt-config/
+letsencrypt-work/
+letsencrypt-logs/
