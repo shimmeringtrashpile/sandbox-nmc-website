@@ -28,6 +28,10 @@ RUN apt-get update && apt-get install -y \
   php-zip && \
   apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# Enable SSL module and site configuration
+RUN a2enmod ssl
+RUN a2ensite default-ssl
+
 # Copy virtual host configuration from current path onto existing 000-default.conf
 COPY default.prod.conf /etc/apache2/sites-available/000-default.conf
 
@@ -42,7 +46,7 @@ COPY entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["entrypoint.sh"]
 
 # Tell container to listen to port 80 at runtime
-EXPOSE 80
+EXPOSE 80 443
 
 # Start Apache web server
 CMD [ "/usr/sbin/apache2ctl", "-DFOREGROUND" ]
