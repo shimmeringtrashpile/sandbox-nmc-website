@@ -2,3 +2,7 @@
 
 #Docker apache user ID file
 id.env
+
+# Let's Encrypt certificates and data
+certs/
+certs-data/
