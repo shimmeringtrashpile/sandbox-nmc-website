@@ -1,8 +1,10 @@
 services:
   webserver:
-    build: .
-    image: sandbox-nmc-website
-    container_name: webserver
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    image: sandbox-nmc-website-prod
+    container_name: webserver-prod
     ports:
       - "80:80"
       - "443:443"

@@ -1,10 +1,12 @@
 services:
   webserver:
-    build: .
-    image: sandbox-nmc-website
-    container_name: webserver
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    image: sandbox-nmc-website-dev
+    container_name: webserver-dev
     ports:
-      - "80:80"
+      - "8080:80"
     volumes:
       - ./nmc-website:/var/www/html/
     env_file:
