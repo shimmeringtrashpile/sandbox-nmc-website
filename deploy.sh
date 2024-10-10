@@ -13,6 +13,8 @@ git pull origin main
 git submodule update --init --recursive
 
 # Restart the Apache service in the webserver-prod docker container.
-docker exec webserver-prod service apache2 restart
+# Note: This command assumes that the container is named webserver-prod.
+# Note: 
+sudo /usr/bin/docker exec webserver-prod service apache2 restart
 
 echo "Deployment completed and Apache restarted."
