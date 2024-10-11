@@ -1,4 +1,4 @@
-name: Deploy to Server
+name: Deploy to nmcdev Server
 
 on:
   push:
